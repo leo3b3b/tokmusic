@@ -1,48 +1,40 @@
 // ═══════════════════════════════════════════════════════════════
 //  NEOWAVE — Global Styles
-//  StyleSheet globais prontos para uso.
 //  Importe { GlobalStyles as gs } e use gs.card, gs.btnPrimary, etc.
-//
-//  Uso:
-//    import { GlobalStyles as gs } from '@/styles/styles';
-//    <View style={gs.card}>...</View>
-//    <Text style={gs.h2}>Título</Text>
+//  Importe { cx } para estilos condicionais.
 // ═══════════════════════════════════════════════════════════════
 
-import { StyleSheet } from 'react-native';
-import { Colors, Typography, Spacing, Radius, Shadows, Size } from './tokens';
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Colors, Radius, Shadows, Size, Spacing, Typography } from './tokens';
+
+type Style = ViewStyle | TextStyle | ImageStyle;
 
 export const GlobalStyles = StyleSheet.create({
 
   // ─── LAYOUT & CONTAINERS ──────────────────────────────────
 
-  // Tela principal
   screen: {
     flex: 1,
     backgroundColor: Colors.bg.base,
   },
 
-  // Tela com padding horizontal padrão
   screenPadded: {
     flex: 1,
     backgroundColor: Colors.bg.base,
     paddingHorizontal: Spacing.screenPaddingH,
   },
 
-  // Área de scroll
   scrollContent: {
     paddingHorizontal: Spacing.screenPaddingH,
-    paddingBottom: Spacing.lg + Spacing.bottomNavHeight, // espaço para a navbar
+    paddingBottom: Spacing.lg + Spacing.bottomNavHeight,
   },
 
-  // Container centralizado
   centered: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  // Row (flex horizontal)
   row: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -60,7 +52,6 @@ export const GlobalStyles = StyleSheet.create({
     gap: Spacing.sm,
   },
 
-  // Separador
   separator: {
     height: 1,
     backgroundColor: Colors.border.subtle,
@@ -69,7 +60,7 @@ export const GlobalStyles = StyleSheet.create({
 
   // ─── NAVBAR ───────────────────────────────────────────────
 
-  navbar: {
+  header: {
     height: Spacing.navbarHeight,
     backgroundColor: Colors.bg.elevated,
     flexDirection: 'row',
@@ -82,42 +73,11 @@ export const GlobalStyles = StyleSheet.create({
 
   navLogo: {
     ...Typography.styles.logo,
-    color: Colors.pink,      // cor base; aplique gradiente via MaskedView se quiser
-  },
-
-  // ─── BOTTOM NAV ───────────────────────────────────────────
-
-  bottomNav: {
-    height: Spacing.bottomNavHeight,
-    backgroundColor: Colors.bg.elevated,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderTopWidth: 1,
-    borderTopColor: Colors.border.subtle,
-  },
-
-  bottomNavItem: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 4,
-  },
-
-  bottomNavLabel: {
-    ...Typography.styles.caption,
-    fontSize: 9,
-    letterSpacing: 1,
-    textTransform: 'uppercase',
-    color: Colors.text.muted,
-  },
-
-  bottomNavLabelActive: {
     color: Colors.pink,
   },
 
   // ─── CARDS ────────────────────────────────────────────────
 
-  // Card padrão
   card: {
     backgroundColor: Colors.bg.card,
     borderRadius: Radius.card,
@@ -127,7 +87,6 @@ export const GlobalStyles = StyleSheet.create({
     ...Shadows.sm,
   },
 
-  // Card elevado (destaques, featured)
   cardElevated: {
     backgroundColor: Colors.bg.elevated,
     borderRadius: Radius.card,
@@ -137,38 +96,35 @@ export const GlobalStyles = StyleSheet.create({
     ...Shadows.md,
   },
 
-  // Card hero (playlist header, banners)
   cardHero: {
     borderRadius: Radius.lg,
     padding: Spacing.screenPaddingH,
     borderWidth: 1,
     borderColor: Colors.border.lime,
-    overflow: 'hidden',  // para gradiente e decorações
+    overflow: 'hidden',
     ...Shadows.lg,
   },
 
   // ─── TIPOGRAFIA ───────────────────────────────────────────
 
-  h1:         { ...Typography.styles.h1 },
-  h2:         { ...Typography.styles.h2 },
-  h3:         { ...Typography.styles.h3 },
-  label:      { ...Typography.styles.label },
-  body:       { ...Typography.styles.body },
+  h1: { ...Typography.styles.h1 },
+  h2: { ...Typography.styles.h2 },
+  h3: { ...Typography.styles.h3 },
+  label: { ...Typography.styles.label },
+  body: { ...Typography.styles.body },
   bodyStrong: { ...Typography.styles.bodyStrong },
-  caption:    { ...Typography.styles.caption },
-  mono:       { ...Typography.styles.mono },
+  caption: { ...Typography.styles.caption },
+  mono: { ...Typography.styles.mono },
 
-  // Variações de cor
-  textPrimary:   { color: Colors.text.primary },
+  textPrimary: { color: Colors.text.primary },
   textSecondary: { color: Colors.text.secondary },
-  textMuted:     { color: Colors.text.muted },
-  textLime:      { color: Colors.text.lime },
-  textPink:      { color: Colors.text.pink },
-  textPeach:     { color: Colors.text.peach },
+  textMuted: { color: Colors.text.muted },
+  textLime: { color: Colors.text.lime },
+  textPink: { color: Colors.text.pink },
+  textPeach: { color: Colors.text.peach },
 
   // ─── BOTÕES ───────────────────────────────────────────────
 
-  // Botão primário (pink sólido)
   btnPrimary: {
     height: Size.btnHeight,
     borderRadius: Radius.button,
@@ -184,16 +140,15 @@ export const GlobalStyles = StyleSheet.create({
     color: Colors.text.primary,
   },
 
-  // Botão secundário (ghost)
   btnSecondary: {
     height: Size.btnHeight,
     borderRadius: Radius.button,
-    backgroundColor: Colors.white[8],
+    backgroundColor: Colors.whiteAlpha.w8,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: Spacing.lg,
     borderWidth: 1,
-    borderColor: Colors.white[20],
+    borderColor: Colors.whiteAlpha.w20,
   },
 
   btnSecondaryText: {
@@ -201,7 +156,6 @@ export const GlobalStyles = StyleSheet.create({
     color: Colors.text.secondary,
   },
 
-  // Botão outline (lime)
   btnOutline: {
     height: Size.btnHeight,
     borderRadius: Radius.button,
@@ -218,14 +172,12 @@ export const GlobalStyles = StyleSheet.create({
     color: Colors.lime,
   },
 
-  // Botão pequeno
   btnSm: {
     height: Size.btnHeightSm,
     borderRadius: Radius.sm,
     paddingHorizontal: Spacing.md,
   },
 
-  // Botão ícone circular
   btnIcon: {
     width: Size.ctrlBtn,
     height: Size.ctrlBtn,
@@ -234,7 +186,6 @@ export const GlobalStyles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  // Botão play principal do player
   btnPlay: {
     width: Size.ctrlPlay,
     height: Size.ctrlPlay,
@@ -254,7 +205,7 @@ export const GlobalStyles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: Spacing.sm,
     borderRadius: Radius.chip,
-    backgroundColor: Colors.white[8],
+    backgroundColor: Colors.whiteAlpha.w8,
     borderWidth: 1,
     borderColor: Colors.border.subtle,
   },
@@ -265,7 +216,7 @@ export const GlobalStyles = StyleSheet.create({
   },
 
   chipActive: {
-    backgroundColor: 'rgba(252,96,168,0.15)',
+    backgroundColor: Colors.pinkAlpha.soft,
     borderColor: Colors.border.default,
   },
 
@@ -274,7 +225,7 @@ export const GlobalStyles = StyleSheet.create({
   },
 
   chipLime: {
-    backgroundColor: 'rgba(206,236,151,0.12)',
+    backgroundColor: Colors.limeAlpha.soft,
     borderColor: Colors.border.lime,
   },
 
@@ -285,7 +236,7 @@ export const GlobalStyles = StyleSheet.create({
 
   badge: {
     paddingVertical: 3,
-    paddingHorizontal: 8,
+    paddingHorizontal: Spacing.sm,
     borderRadius: Radius.chip,
     backgroundColor: Colors.lime,
   },
@@ -293,7 +244,7 @@ export const GlobalStyles = StyleSheet.create({
   badgeText: {
     fontFamily: Typography.family.display,
     fontSize: 8,
-    fontWeight: '700',
+    fontWeight: '700' as const,
     letterSpacing: 1,
     color: Colors.text.inverse,
   },
@@ -321,7 +272,6 @@ export const GlobalStyles = StyleSheet.create({
     marginBottom: Spacing.xs,
   },
 
-  // Barra de busca
   searchBar: {
     height: 40,
     backgroundColor: Colors.bg.card,
@@ -334,19 +284,19 @@ export const GlobalStyles = StyleSheet.create({
     gap: Spacing.sm,
   },
 
-  // ─── TRACK ITEM (lista de músicas) ────────────────────────
+  // ─── TRACK ITEM ───────────────────────────────────────────
 
   trackItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.3,
+    gap: Spacing.sm,
     paddingVertical: Spacing.listItemPaddingV,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border.subtle,
   },
 
   trackItemActive: {
-    borderBottomColor: 'rgba(252,96,168,0.15)',
+    borderBottomColor: Colors.pinkAlpha.soft,
   },
 
   trackThumb: {
@@ -360,7 +310,7 @@ export const GlobalStyles = StyleSheet.create({
 
   trackInfo: {
     flex: 1,
-    minWidth: 0,       // necessário para text ellipsis em flex
+    minWidth: 0,
   },
 
   trackTitle: {
@@ -414,11 +364,10 @@ export const GlobalStyles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  // Waveform bar (cada barra individual)
   waveBar: {
     flex: 1,
     borderRadius: 2,
-    backgroundColor: Colors.white[12],
+    backgroundColor: Colors.whiteAlpha.w12,
   },
 
   waveBarPlayed: {
@@ -429,38 +378,14 @@ export const GlobalStyles = StyleSheet.create({
     backgroundColor: Colors.lime,
   },
 
-  // ─── AVATARES ─────────────────────────────────────────────
-
-  avatar: {
-    width: Size.thumb,
-    height: Size.thumb,
-    borderRadius: Radius.full,
-    backgroundColor: Colors.bg.elevated,
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-  },
-
-  avatarSm: {
-    width: Size.thumbSm,
-    height: Size.thumbSm,
-    borderRadius: Radius.full,
-  },
-
-  avatarLg: {
-    width: Size.thumbLg,
-    height: Size.thumbLg,
-    borderRadius: Radius.full,
-  },
-
   // ─── SEÇÃO ────────────────────────────────────────────────
 
   sectionHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: Spacing.3,
-    marginTop: Spacing.4,
+    marginBottom: Spacing.sm,
+    marginTop: Spacing.md,
   },
 
   sectionLabel: {
@@ -495,48 +420,40 @@ export const GlobalStyles = StyleSheet.create({
     width: 40,
     height: 4,
     borderRadius: Radius.full,
-    backgroundColor: Colors.white[20],
+    backgroundColor: Colors.whiteAlpha.w20,
     alignSelf: 'center',
     marginBottom: Spacing.md,
   },
 
   // ─── UTILITÁRIOS ──────────────────────────────────────────
 
-  flex1:    { flex: 1 },
-  flex0:    { flexShrink: 0 },
-  w100:     { width: '100%' },
+  flex1: { flex: 1 },
+  flex0: { flexShrink: 0 },
+  w100: { width: '100%' },
 
-  // Gap helpers (React Native 0.71+ suporta gap em View)
-  gap1: { gap: Spacing.xs },
-  gap2: { gap: Spacing.sm },
-  gap3: { gap: Spacing.3 },
-  gap4: { gap: Spacing.md },
+  gapXs: { gap: Spacing.xs },
+  gapSm: { gap: Spacing.sm },
+  gapMd: { gap: Spacing.md },
+  gapLg: { gap: Spacing.lg },
 
-  // Margin helpers
   mt1: { marginTop: Spacing.xs },
   mt2: { marginTop: Spacing.sm },
-  mt3: { marginTop: Spacing.3 },
-  mt4: { marginTop: Spacing.md },
+  mt3: { marginTop: Spacing.md },
+  mt4: { marginTop: Spacing.lg },
 
   mb1: { marginBottom: Spacing.xs },
   mb2: { marginBottom: Spacing.sm },
-  mb3: { marginBottom: Spacing.3 },
-  mb4: { marginBottom: Spacing.md },
+  mb3: { marginBottom: Spacing.md },
+  mb4: { marginBottom: Spacing.lg },
 
   mx: { marginHorizontal: Spacing.screenPaddingH },
-
-  // Padding helpers
   px: { paddingHorizontal: Spacing.screenPaddingH },
   py: { paddingVertical: Spacing.screenPaddingV },
 
-  // Overflow
   overflowHidden: { overflow: 'hidden' },
-
-  // Posicionamento
   absolute: { position: 'absolute' },
-  inset0:   { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
+  inset0: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
 
-  // Visually hidden (acessibilidade)
   srOnly: {
     position: 'absolute',
     width: 1,
@@ -548,4 +465,5 @@ export const GlobalStyles = StyleSheet.create({
 
 // ─── HELPER: estilo condicional ────────────────────────────────
 // Uso: cx(gs.btnPrimary, isActive && gs.chipActive)
-export const cx = (...styles) => styles.filter(Boolean);
+export const cx = (...styles: (Style | false | null | undefined)[]): Style[] =>
+  styles.filter(Boolean) as Style[];
