@@ -18,7 +18,6 @@ type MusicaContextType = {
     playlists: Playlist[];
     criarPlaylist: (nome: string) => void;
     adicionarMusica: (playlistId: string, musicaId: string) => void;
-    removerMusica: (playlistId: string, musicaId: string) => void;
     getMusicaById: (id: string) => MusicaComCurtida | undefined;
     getPlaylistMusicas: (playlist: Playlist) => MusicaComCurtida[];
 };
@@ -63,16 +62,6 @@ export function MusicaProvider({ children }: { children: React.ReactNode }) {
         );
     }
 
-    function removerMusica(playlistId: string, musicaId: string) {
-        setPlaylists((prev) =>
-            prev.map((p) =>
-                p.id === playlistId
-                    ? { ...p, musicaIds: p.musicaIds.filter((id) => id !== musicaId) }
-                    : p
-            )
-        );
-    }
-
     function getMusicaById(id: string) {
         return musicas.find((m) => m.id === id);
     }
@@ -92,7 +81,6 @@ export function MusicaProvider({ children }: { children: React.ReactNode }) {
                 playlists,
                 criarPlaylist,
                 adicionarMusica,
-                removerMusica,
                 getMusicaById,
                 getPlaylistMusicas,
             }}
