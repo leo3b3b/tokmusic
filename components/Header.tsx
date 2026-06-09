@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <View style={{ paddingTop: insets.top, backgroundColor: gs.header.backgroundColor }}>
       <View style={gs.header}>
-        <Text style={gs.navLogo}>NEOWAVE</Text>
+        <Text style={gs.navLogo}>TOKMUSIC</Text>
       </View>
     </View>
   );
