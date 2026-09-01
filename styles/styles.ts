@@ -244,7 +244,6 @@ export const GlobalStyles = StyleSheet.create({
   badgeText: {
     fontFamily: Typography.family.display,
     fontSize: 8,
-    fontWeight: '700' as const,
     letterSpacing: 1,
     color: Colors.text.inverse,
   },

@@ -97,17 +97,9 @@ export const Colors = {
 // ─── TIPOGRAFIA ───────────────────────────────────────────────
 export const Typography = {
   family: {
-    display: 'Orbitron',  // títulos, logo, labels de destaque
-    body: 'Rajdhani',  // textos correntes, listas, botões
+    display: 'Orbitron-Bold',  // títulos, logo, labels de destaque
+    body: 'Rajdhani-Regular',  // textos correntes, listas, botões
     mono: 'monospace', // timestamps, códigos
-  },
-
-  weight: {
-    light: '300' as const,
-    regular: '400' as const,
-    semibold: '600' as const,
-    bold: '700' as const,
-    black: '900' as const,
   },
 
   size: {
@@ -138,68 +130,68 @@ export const Typography = {
   // Estilos prontos — referencia tokens acima em vez de hardcode
   styles: {
     logo: {
-      fontFamily: 'Orbitron',
+      fontFamily: 'Orbitron-Black',
       fontSize: 18,
-      fontWeight: '900' as const,
       letterSpacing: 3,
     } as TextStyle,
+
     h1: {
-      fontFamily: 'Orbitron',
+      fontFamily: 'Orbitron-Bold',
       fontSize: 28,
-      fontWeight: '700' as const,
       letterSpacing: 1,
       color: '#FFFFFF',
     } as TextStyle,
+
     h2: {
-      fontFamily: 'Orbitron',
+      fontFamily: 'Orbitron-Bold',
       fontSize: 20,
-      fontWeight: '700' as const,
       letterSpacing: 0.5,
       color: '#FFFFFF',
     } as TextStyle,
+
     h3: {
-      fontFamily: 'Orbitron',
+      fontFamily: 'Orbitron-Bold',
       fontSize: 16,
-      fontWeight: '700' as const,
       color: '#FFFFFF',
     } as TextStyle,
+
     label: {
-      fontFamily: 'Orbitron',
+      fontFamily: 'Orbitron-Regular',
       fontSize: 10,
-      fontWeight: '400' as const,
       letterSpacing: 3,
-      textTransform: 'uppercase' as const,
+      textTransform: 'uppercase',
       color: '#CEEC97',
     } as TextStyle,
+
     body: {
-      fontFamily: 'Rajdhani',
+      fontFamily: 'Rajdhani-Regular',
       fontSize: 14,
-      fontWeight: '400' as const,
       color: 'rgba(255,255,255,0.60)',
     } as TextStyle,
+
     bodyStrong: {
-      fontFamily: 'Rajdhani',
+      fontFamily: 'Rajdhani-SemiBold',
       fontSize: 14,
-      fontWeight: '600' as const,
       color: '#FFFFFF',
     } as TextStyle,
+
     caption: {
-      fontFamily: 'Rajdhani',
+      fontFamily: 'Rajdhani-Regular',
       fontSize: 12,
-      fontWeight: '400' as const,
       color: 'rgba(255,255,255,0.40)',
     } as TextStyle,
+
     mono: {
       fontFamily: 'monospace',
       fontSize: 11,
       color: 'rgba(255,255,255,0.40)',
     } as TextStyle,
+
     button: {
-      fontFamily: 'Rajdhani',
+      fontFamily: 'Rajdhani-SemiBold',
       fontSize: 14,
-      fontWeight: '600' as const,
       letterSpacing: 1.5,
-      textTransform: 'uppercase' as const,
+      textTransform: 'uppercase',
     } as TextStyle,
   },
 };

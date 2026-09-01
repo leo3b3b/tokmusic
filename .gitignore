@@ -30,8 +30,20 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Firebase service account / Admin SDK credentials
+serviceAccountKey.json
+*-firebase-adminsdk-*.json
+
+# Local environment variables
+.env
+.env.*
+!.env.example
 
 # typescript
 *.tsbuildinfo
